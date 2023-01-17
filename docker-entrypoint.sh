@@ -3,8 +3,11 @@ set -e
 
 create-project() {
   echo "Creating project..."
-  cd /laravel-app
-  composer create-project laravel/laravel .
+  if [ -z "$(ls -A /laravel-app)" ]; then
+    cd /laravel-app
+    composer create-project laravel/laravel .
+  fi
+  echo "Project created..."
 }
 
 create-project
