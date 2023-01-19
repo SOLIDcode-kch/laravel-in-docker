@@ -11,7 +11,6 @@ RUN chmod +x /usr/local/bin/waitforit
 
 RUN docker-php-ext-install pdo pdo_mysql
 
-#WORKDIR /docker-files
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 ENTRYPOINT ["/docker-files/docker-entrypoint.sh"]

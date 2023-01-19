@@ -12,4 +12,5 @@ services:
       - ${LARAVEL_APP_LOCATION}/${LARAVEL_APP_NAME}:/laravel-app
       - ./.docker/site.conf:/etc/nginx/nginx.conf
       - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.socks
+    working_dir: /laravel-app
     container_name: ${APP_CONTAINER_NAME}
