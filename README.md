@@ -1,4 +1,4 @@
-## Laravel-in-docker APP v1.0.0
+## Laravel-in-docker APP v1
 
 Thanks to this docker-based configuration, you will be able to run the latest version of the Laravel framework. 
 
