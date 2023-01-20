@@ -5,6 +5,10 @@ services:
     build:
       context: ./.docker/php-fpm
       ssh: [ 'default' ]
+      args:
+        - DB_NAME=${MYSQL_DATABASE}
+        - DB_USER=${MYSQL_USER}
+        - DB_PASSWORD=${MYSQL_PASSWORD}
     ports:
       - "${NGINX_PORT}:80"
     volumes:
@@ -12,4 +16,14 @@ services:
       - ./.docker/php-fpm/site.conf:/etc/nginx/nginx.conf
       - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.socks
     working_dir: /laravel-app
+    depends_on:
+      - mysql
     container_name: ${APP_CONTAINER_NAME}
+
+  mysql:
+    image: mysql:latest
+    env_file:
+      - .env
+    ports:
+      - "${MYSQL_PORT}:3306"
+    container_name: ${LARAVEL_MYSQL_NAME}
