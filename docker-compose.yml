@@ -26,4 +26,4 @@ services:
       - .env
     ports:
       - "${MYSQL_PORT}:3306"
-    container_name: ${LARAVEL_MYSQL_NAME}
+    container_name: ${MYSQL_CONTAINER_NAME}
