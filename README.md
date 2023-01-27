@@ -1,38 +1,45 @@
-## Laravel-in-docker APP v2
+## Laravel in Docker v3
 
-Thanks to this docker-based configuration, you will be able to run the latest version of the Laravel framework. 
+This package will allow you to run your Laravel app on the Docker environment in the very simple way.
 
-Your project will be run on the NGINX server and the PHP in the version 8.2. 
-All database env variables are automatically sed to the application, so you can use start coding with initialized db 
-and without making any changes in the Laravel `.env` file.
+You will be able to run a completely new Laravel project instance in the latest version but also the already existing project.
 
-The database engine is MySQL in the latest version.
+This package runs following tools:
 
-## Requirements
-- Docker
-- docker-compose
+- PHP 8.2
+- NGINX server
+- MySQL in the latest version
+- RabbitMQ
 
-## Running instructions
-* Clone the repository (or download the package as the ZIP archive)
-* Run `cp .env.example .env`
-* Customize environmental variables in the ENV file if you need
-  * `NGINX_PORT` - nginx port where your application will be available
-  * `APP_CONTAINER_NAME` - newly created Docker container (with PHP, NGINX and Laravel inside) name
-  * `LARAVEL_APP_LOCATION` - the location where the newly created application will be stored - 
-  as default will be in the same directory
-  * `LARAVEL_APP_NAME` - name of the newly created laravel-app <br />
-  (the patch to your application on your disk storage will be `LARAVEL_APP_LOCATION/LARAVEL_APP_NAME`, e.g. `./laravel-app`)
-  * `MYSQL_PORT` - MySQL port where you DB will be available
-  * `MYSQL_CONTAINER_NAME` - newly created MySQL container name
-  * `MYSQL_ROOT_PASSWORD` - Password for the root user of the database
-  * `MYSQL_DATABASE` - Name of the database
-  * `MYSQL_USER` - Name of the not-root database user
-  * `MYSQL_PASSWORD` - Password for the not-root database user 
-* Run `docker-compose up`
+After run one `docker-compose up` command, your application will be ready to use!
 
-Right after all steps above are done, your clear laravel application should be installed in the directory 
-indicated by you and should be available on `http://localhost{NGINX_PORT}`, e.g.`http://localhost:9999`
+## How to run it?
+In order to run docker container from this package, simply go to the `laravel-in-docker` directory, 
+create the `.env` file based on the `.env.example` file (`cp .env.example .env`) and run `docker-compose up` (wait until NGINX server will be running).
+Then your application will be available on the URL: [http://localhost:9999](http://localhost:9999) 
+and will be connected to the MySQL database.
 
-## Using docker
-In order to artisan / composer commands, pleas go to the directory that contains `docker-compose.yml` file and run
-`docker-compose exec app bash`.
+You have many of possibilities to customize variables in the `.env` file. Please do it, before run `docker-compose up` if you need.
+
+- `NGINX_PORT` - port where your NGINX server will be started and where your application will be available, e.g. [http://localhost:9999](http://localhost:9999)
+- `APP_CONTAINER_NAME` - name of the newly created `app` container 
+(will be shown when you run the `docker ps` or the `docker-compose ps` command)
+- `LARAVEL_APP_LOCATION` - location on your computer where the application will be or is already stored 
+(as default is set as the same directory as docker configuration) - it must be without `/` at the end
+- `LARAVEL_APP_NAME` - name of the directory where files from your application will be or is already stored
+(as default your application files are stored in `laravel-in-docker/laravel-app` directory)
+- `MYSQL_PORT` - port where your database will be available from your local machine 
+- `MYSQL_CONTAINER_NAME` - name of the newly created `mysql` container 
+(will be shown when you run the `docker ps` or the `docker-compose ps` command)
+- `MYSQL_ROOT_PASSWORD` - password for the root user of the newly created or already existing MySQL engine
+- `MYSQL_DATABASE` - name of the newly created or already existed database where are or will be stored tables with data for the Laravel application
+- `MYSQL_USER` - name of the newly created or already existed database user
+- `MYSQL_PASSWORD` - password for the user that is the owner of the newly created or already existed database
+- `RABBITMQ_CONTAINER_NAME` - name of the newly created `rabbitmq` container
+(will be shown when you run the `docker ps` or the `docker-compose ps` command)
+- `RABBITMQ_PORT` - port where your RabbitMQ console will be available from the local machine e.g. [http://localhost:15672](http://localhost:15672)
+
+## How to run Artisan commands?
+In order to run artisan commands (or install composer dependencies) please run: 
+`docker exec -it laravel_app bash` (in any location on your local machine) or
+`docker-compose exec app bash` in the `laravel-in-docker` directory (where the `docker-compose.yml` file is stored).
