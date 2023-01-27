@@ -25,7 +25,7 @@ You have many of possibilities to customize variables in the `.env` file. Please
 - `APP_CONTAINER_NAME` - name of the newly created `app` container 
 (will be shown when you run the `docker ps` or the `docker-compose ps` command)
 - `LARAVEL_APP_LOCATION` - location on your computer where the application will be or is already stored 
-(as default is set as the same directory as docker configuration)
+(as default is set as the same directory as docker configuration) - it must be without `/` at the end
 - `LARAVEL_APP_NAME` - name of the directory where files from your application will be or is already stored
 (as default your application files are stored in `laravel-in-docker/laravel-app` directory)
 - `MYSQL_PORT` - port where your database will be available from your local machine 
