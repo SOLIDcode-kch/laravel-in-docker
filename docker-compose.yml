@@ -25,3 +25,9 @@ services:
     ports:
       - "${MYSQL_PORT}:3306"
     container_name: ${MYSQL_CONTAINER_NAME}
+
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    ports:
+      - "${RABBITMQ_PORT}:15672"
+    container_name: ${RABBITMQ_CONTAINER_NAME}
