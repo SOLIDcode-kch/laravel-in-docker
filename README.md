@@ -15,7 +15,7 @@ After run one `docker-compose up` command, your application will be ready to use
 
 ## How to run it?
 In order to run docker container from this package, simply go to the `laravel-in-docker` directory, 
-create the `.env` file based on the `.env.example` file (`cp .env.example .env`) and run `docker-compose up`.
+create the `.env` file based on the `.env.example` file (`cp .env.example .env`) and run `docker-compose up` (wait until NGINX server will be running).
 Then your application will be available on the URL: [http://localhost:9999](http://localhost:9999) 
 and will be connected to the MySQL database.
 
