@@ -32,3 +32,7 @@ The database engine is MySQL in the latest version.
 
 Right after all steps above are done, your clear laravel application should be installed in the directory 
 indicated by you and should be available on `http://localhost{NGINX_PORT}`, e.g.`http://localhost:9999`
+
+## Using docker
+In order to artisan / composer commands, pleas go to the directory that contains `docker-compose.yml` file and run
+`docker-compose exec app bash`.
