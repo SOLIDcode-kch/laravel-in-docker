@@ -24,7 +24,7 @@ prepare-db-envs() {
 
 init-db() {
   echo "Initializing database..."
-  php artisan migrate
+  php artisan db:wipe && php artisan migrate && php artisan db:seed
   echo "Database initialized."
 }
 
@@ -32,11 +32,12 @@ init-project() {
   if [ -z "$(ls -A /laravel-app)" ]; then
     create-new-project
     set-valid-permissions
-    prepare-db-envs "$@"
-    init-db
+    prepare-db-envs ${MYSQL_DATABASE} ${MYSQL_USER} ${MYSQL_PASSWORD}
   else
     echo "Project exists."
   fi
+
+  init-db
 }
 
 start-php() {
@@ -50,6 +51,6 @@ start-nginx() {
   nginx -g 'daemon off;'
 }
 
-init-project "$@"
+init-project
 start-php
 start-nginx
