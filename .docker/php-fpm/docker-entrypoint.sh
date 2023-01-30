@@ -25,7 +25,7 @@ prepare-db-envs() {
 init-db() {
   waitforit -address=mysql:3306 -timeout=30 -- echo "MySQL is up!"
   echo "Initializing database..."
-  php php artisan migrate && php artisan db:seed
+  php artisan migrate && php artisan db:seed
   echo "Database initialized."
 }
 
