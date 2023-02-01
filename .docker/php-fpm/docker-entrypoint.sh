@@ -22,6 +22,13 @@ prepare-db-envs() {
   echo "Database envs prepared."
 }
 
+prepare-redis-envs() {
+  echo "Preparing envs for redis connection..."
+  echo "REDIS_CLIENT=predis" >> /laravel-app/.env
+  sed -i -r "s/^(REDIS_HOST=).*/\1redis/g" /laravel-app/.env
+  echo "Redis envs prepared."
+}
+
 init-db() {
   waitforit -address=mysql:3306 -timeout=30 -- echo "MySQL is up!"
   echo "Initializing database..."
@@ -34,6 +41,7 @@ init-project() {
     create-new-project
     set-valid-permissions
     prepare-db-envs ${MYSQL_DATABASE} ${MYSQL_USER} ${MYSQL_PASSWORD}
+    prepare-redis-envs
   else
     echo "Project exists."
   fi
