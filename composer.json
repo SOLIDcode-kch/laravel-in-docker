@@ -2,6 +2,7 @@
     "name": "solidcode-kch/laravel-in-docker",
     "description": "Run Laravel project on Docker",
     "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "Krzysztof Chadynka",
