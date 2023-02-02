@@ -9,6 +9,5 @@
             "email": "krzysztof.chadynka@solidcode.com.pl"
         }
     ],
-    "minimum-stability": "dev",
     "require": {}
 }
