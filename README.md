@@ -1,4 +1,4 @@
-## Laravel in Docker v3
+## Laravel in Docker v4
 
 This package will allow you to run your Laravel app on the Docker environment in the very simple way.
 
@@ -10,6 +10,7 @@ This package runs following tools:
 - NGINX server
 - MySQL in the latest version
 - RabbitMQ
+- Redis
 
 After run one `docker-compose up` command, your application will be ready to use!
 
@@ -37,7 +38,10 @@ You have many of possibilities to customize variables in the `.env` file. Please
 - `MYSQL_PASSWORD` - password for the user that is the owner of the newly created or already existed database
 - `RABBITMQ_CONTAINER_NAME` - name of the newly created `rabbitmq` container
 (will be shown when you run the `docker ps` or the `docker-compose ps` command)
-- `RABBITMQ_PORT` - port where your RabbitMQ console will be available from the local machine e.g. [http://localhost:15672](http://localhost:15672)
+- `RABBITMQ_PORT` - port where your RabbitMQ console will be available from the local machine, e.g. [http://localhost:15672](http://localhost:15672)
+- `REDIS_CONTAINER_NAME` - name of the newly created `redis` container
+  (will be shown when you run the `docker ps` or the `docker-compose ps` command)
+- `REDIS_PORT` - port where your Redis will be available from the local machine, e.g. [http://localhost:6379](http://localhost:6379)
 
 ## How to run Artisan commands?
 In order to run artisan commands (or install composer dependencies) please run: 
