@@ -31,3 +31,9 @@ services:
     ports:
       - "${RABBITMQ_PORT}:15672"
     container_name: ${RABBITMQ_CONTAINER_NAME}
+
+  redis:
+    image: redis:latest
+    ports:
+      - "${REDIS_PORT}:6379"
+    container_name: ${REDIS_CONTAINER_NAME}
