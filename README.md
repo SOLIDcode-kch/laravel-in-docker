@@ -1,4 +1,4 @@
-## Laravel in Docker v4
+# Laravel in Docker v4
 
 This package will allow you to run your Laravel app on the Docker environment in the very simple way.
 
@@ -12,11 +12,20 @@ This package runs following tools:
 - RabbitMQ
 - Redis
 
-After run one `docker-compose up` command, your application will be ready to use!
+After run once `docker-compose up` command, your application will be ready to use!
 
-## How to run it?
+## Install package
+```shell
+composer create-project solidcode-kch/laravel-in-docker
+```
+
+## How to run the Laravel application?
 In order to run docker container from this package, simply go to the `laravel-in-docker` directory, 
-create the `.env` file based on the `.env.example` file (`cp .env.example .env`) and run `docker-compose up` (wait until NGINX server will be running).
+create the `.env` file based on the `.env.example` file (`cp .env.example .env`) and run 
+```shell
+docker-compose up
+```
+(wait until NGINX server will be running).
 Then your application will be available on the URL: [http://localhost:9999](http://localhost:9999) 
 and will be connected to the MySQL database.
 
