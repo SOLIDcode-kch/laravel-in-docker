@@ -1,0 +1,15 @@
+{
+    "name": "solidcode-kch/laravel-in-docker",
+    "description": "Run Laravel project on Docker",
+    "keywords": ["laravel", "docker", "laravel-in-docker", "solidcode"],
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Krzysztof Chadynka",
+            "email": "krzysztof.chadynka@solidcode.com.pl"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
