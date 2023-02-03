@@ -36,17 +36,37 @@ init-db() {
   echo "Database initialized."
 }
 
-init-project() {
-  if [ -z "$(ls -A /laravel-app)" ]; then
-    create-new-project
-    set-valid-permissions
-    prepare-db-envs ${MYSQL_DATABASE} ${MYSQL_USER} ${MYSQL_PASSWORD}
-    prepare-redis-envs
-  else
-    echo "Project exists."
-  fi
+install-composer-dependencies() {
+  echo "Installing composer dependencies..."
+  composer install
+  echo "Composer installed."
+}
 
+run-new-project() {
+  echo "Creating new Laravel project..."
+  create-new-project
+  set-valid-permissions
+  prepare-db-envs ${MYSQL_DATABASE} ${MYSQL_USER} ${MYSQL_PASSWORD}
+  prepare-redis-envs
   init-db
+  echo "Project created."
+}
+
+run-existing-project() {
+  echo "Running already existing project..."
+  set-valid-permissions
+  install-composer-dependencies
+  prepare-db-envs ${MYSQL_DATABASE} ${MYSQL_USER} ${MYSQL_PASSWORD}
+  prepare-redis-envs
+  init-db
+}
+
+start-project() {
+  if [ -z "$(ls -A /laravel-app)" ]; then
+    run-new-project
+  else
+    run-existing-project
+  fi
 }
 
 start-php() {
@@ -60,6 +80,6 @@ start-nginx() {
   nginx -g 'daemon off;'
 }
 
-init-project
+start-project
 start-php
 start-nginx
