@@ -4,6 +4,9 @@ This package will allow you to run your Laravel app on the Docker environment in
 
 You will be able to run a completely new Laravel project instance in the latest version but also the already existing project.
 
+**IMPORTANT:** If you want to run already existing project, you have to ensure that his `.env` file exists, because this package
+will make some modifications inside it.
+
 This package runs following tools:
 
 - PHP 8.2
