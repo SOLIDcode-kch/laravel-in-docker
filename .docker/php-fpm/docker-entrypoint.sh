@@ -62,7 +62,7 @@ run-existing-project() {
 }
 
 start-project() {
-  if [ -z "$(ls -A /laravel-app)" ]; then
+§  if [ -z "$(ls -A /${LARAVEL_APP_NAME})" ]; then
     run-new-project
   else
     run-existing-project
